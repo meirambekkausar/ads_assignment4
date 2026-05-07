@@ -1,0 +1,55 @@
+ADS ASSIGNMENT 4 - GRAPHS
+
+TASK 1: Depth First Search (DFS) Trace
+Source Node: A
+Adjacency Lists:
+A: C, B, D
+B: A, C, E, G
+C: A, B, D
+D: C, A
+E: G, F, B
+F: G, E
+G: F, B
+
+DFS Step-by-Step Trace:
+1. Start at A. Visit A. (Visited: A)
+2. Move to first unvisited neighbor of A: C. (Visited: A, C)
+3. From C, move to first unvisited neighbor: B. (Visited: A, C, B)
+4. From B, move to first unvisited neighbor: E. (Visited: A, C, B, E)
+5. From E, move to first unvisited neighbor: G. (Visited: A, C, B, E, G)
+6. From G, move to first unvisited neighbor: F. (Visited: A, C, B, E, G, F)
+7. From F, neighbors G and E are already visited. Backtrack to G.
+8. From G, neighbors F and B are already visited. Backtrack to E.
+9. From E, backtrack to B.
+10. From B, backtrack to C.
+11. From C, visit next unvisited neighbor: D. (Visited: A, C, B, E, G, F, D)
+12. Backtrack from D to C, then back to A.
+Final DFS Order: A, C, B, E, G, F, D
+
+---------------------------------------------------------
+TASK 2: Breadth First Search (BFS) Trace
+Source Node: A
+
+BFS Step-by-Step Trace (Queue):
+1. Enqueue A. (Queue: [A], Visited: A)
+2. Dequeue A. Enqueue neighbors C, B, D. (Queue: [C, B, D], Visited: A, C, B, D)
+3. Dequeue C. Neighbors A, B, D are already visited/queued. (Queue: [B, D])
+4. Dequeue B. Enqueue unvisited neighbors E, G. (Queue: [D, E, G], Visited: A, C, B, D, E, G)
+5. Dequeue D. Neighbors C, A already visited. (Queue: [E, G])
+6. Dequeue E. Enqueue unvisited neighbor F. (Queue: [G, F], Visited: A, C, B, D, E, G, F)
+7. Dequeue G. All neighbors visited. (Queue: [F])
+8. Dequeue F. All neighbors visited. (Queue: [])
+Final BFS Order: A, C, B, D, E, G, F
+
+---------------------------------------------------------
+
+TASK 4: Shortest Path - Edinburgh to Dundee
+Map Analysis:
+Based on the Scottish road network, the nodes typically involved are Edinburgh, Perth, Stirling, St Andrews, and Dundee.
+Path 1: Edinburgh -> Perth -> Dundee
+Path 2: Edinburgh -> Stirling -> Perth -> Dundee
+Path 3: Edinburgh -> St Andrews -> Dundee
+
+Shortest Path Calculation (Dijkstra):
+The most direct route in standard graph problems for this map is Edinburgh to Perth, then Perth to Dundee.
+Route: Edinburgh -> Perth -> Dundee.
