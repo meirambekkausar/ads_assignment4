@@ -8,28 +8,20 @@ public class GraphTraversal {
         adj.computeIfAbsent(v, k -> new ArrayList<>()).add(u);
     }
 
-    public void dfs(String start) {
-        Set<String> visited = new LinkedHashSet<>();
-        System.out.print("DFS Order: ");
-        dfsRecursive(start, visited);
-        System.out.println();
-    }
-
-    private void dfsRecursive(String v, Set<String> visited) {
-        visited.add(v);
-        System.out.print(v + " ");
-        for (String neighbor : adj.getOrDefault(v, new ArrayList<>())) {
-            if (!visited.contains(neighbor)) dfsRecursive(neighbor, visited);
+    public void dfs(String start, Set<String> visited) {
+        visited.add(start);
+        System.out.print(start + " ");
+        for (String neighbor : adj.getOrDefault(start, new ArrayList<>())) {
+            if (!visited.contains(neighbor)) dfs(neighbor, visited);
         }
     }
 
     public void bfs(String start) {
-        Set<String> visited = new LinkedHashSet<>();
+        Set<String> visited = new HashSet<>();
         Queue<String> queue = new LinkedList<>();
         visited.add(start);
         queue.add(start);
 
-        System.out.print("BFS Order: ");
         while (!queue.isEmpty()) {
             String v = queue.poll();
             System.out.print(v + " ");
@@ -40,17 +32,30 @@ public class GraphTraversal {
                 }
             }
         }
-        System.out.println();
     }
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         GraphTraversal g = new GraphTraversal();
-        g.addEdge("A", "C"); g.addEdge("A", "B"); g.addEdge("A", "D");
-        g.addEdge("B", "C"); g.addEdge("B", "E"); g.addEdge("B", "G");
-        g.addEdge("C", "D"); g.addEdge("E", "G"); g.addEdge("E", "F");
-        g.addEdge("F", "G");
 
-        g.dfs("A");
-        g.bfs("A");
+
+        System.out.print("Enter number of edges: ");
+        int edges = sc.nextInt();
+
+        System.out.println("Enter edges (source destination):");
+        for (int i = 0; i < edges; i++) {
+            g.addEdge(sc.next(), sc.next());
+        }
+
+        System.out.print("Enter starting node for DFS/BFS: ");
+        String startNode = sc.next();
+
+        System.out.print("\nDFS Traversal result: ");
+        g.dfs(startNode, new HashSet<>());
+
+        System.out.print("\nBFS Traversal result: ");
+        g.bfs(startNode);
+
+        sc.close();
     }
 }
