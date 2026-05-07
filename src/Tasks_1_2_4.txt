@@ -1,6 +1,6 @@
-ADS ASSIGNMENT 4 - GRAPHS
+ads assignment 4 - graphs
 
-TASK 1: Depth First Search (DFS) Trace
+Task 1: Depth First Search (DFS) Trace
 Source Node: A
 Adjacency Lists:
 A: C, B, D
@@ -26,8 +26,8 @@ DFS Step-by-Step Trace:
 12. Backtrack from D to C, then back to A.
 Final DFS Order: A, C, B, E, G, F, D
 
----------------------------------------------------------
-TASK 2: Breadth First Search (BFS) Trace
+
+Task 2: Breadth First Search (BFS) Trace
 Source Node: A
 
 BFS Step-by-Step Trace (Queue):
@@ -41,9 +41,9 @@ BFS Step-by-Step Trace (Queue):
 8. Dequeue F. All neighbors visited. (Queue: [])
 Final BFS Order: A, C, B, D, E, G, F
 
----------------------------------------------------------
 
-TASK 4: Shortest Path - Edinburgh to Dundee
+
+Task 4: Shortest Path - Edinburgh to Dundee
 Map Analysis:
 Based on the Scottish road network, the nodes typically involved are Edinburgh, Perth, Stirling, St Andrews, and Dundee.
 Path 1: Edinburgh -> Perth -> Dundee
